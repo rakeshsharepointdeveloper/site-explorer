@@ -1,0 +1,19 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "useGulp": false,
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "nodeVersion": "22.23.3",
+    "sdksVersions": {},
+    "version": "1.23.2",
+    "libraryName": "site-explorer",
+    "libraryId": "1bf68f7d-a15c-48b5-86b2-f0b64f294b20",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "site-explorer",
+    "solutionShortDescription": "site-explorer description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "webpart"
+  }
+}

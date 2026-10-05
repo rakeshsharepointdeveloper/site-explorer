@@ -1,0 +1,273 @@
+// Colors are CSS variables set from the Teams theme (light, dark, high contrast) in onThemeChanged.
+$text: var(--se-text, #242424);
+$subtle: var(--se-subtle, #605e5c);
+$border: var(--se-border, #e1dfdd);
+$rowLine: var(--se-row, #f3f2f1);
+$surface: var(--se-surface, #ffffff);
+$pane: var(--se-pane, #faf9f8);
+$well: var(--se-well, #f5f5f5);
+$selected: var(--se-selected, #edebe9);
+$accent: var(--se-accent, #0f6cbd);
+$accentSoft: var(--se-accent-soft, #ebf3fc);
+$disabled: var(--se-disabled, #a19f9d);
+$warn: var(--se-warn, #8a3707);
+
+.root {
+  display: flex;
+  min-height: 480px;
+  overflow: hidden;
+  font-size: 14px;
+  line-height: 20px;
+  color: $text;
+  background: $surface;
+  font-family: 'Segoe UI', 'Segoe UI Web (West European)', -apple-system, 'Helvetica Neue', sans-serif;
+}
+
+// Left pane
+.left {
+  width: 300px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  background: $pane;
+  border-right: 1px solid $border;
+}
+.leftNarrow { width: 100%; border-right: 0; }
+
+.leftHeader { display: flex; align-items: center; gap: 8px; padding: 12px 8px 4px 16px; }
+.heading { margin: 0; flex-grow: 1; font-size: 16px; font-weight: 600; }
+.count { font-size: 12px; color: $subtle; }
+.filter { padding: 4px 16px 12px; }
+.listScroll { flex-grow: 1; min-height: 0; overflow-y: auto; padding: 0 8px 12px; }
+.listSpinner { justify-content: flex-start; padding: 12px 8px; }
+.list { list-style: none; margin: 0; padding: 0; }
+
+.item {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 2px;
+  padding: 10px 10px 10px 12px;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  text-align: left;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+
+  &:hover { background: $rowLine; }
+  &:focus-visible { outline: 2px solid $accent; outline-offset: -2px; }
+}
+
+.itemActive {
+  background: $selected;
+  &:hover { background: $selected; }
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 14px;
+    bottom: 14px;
+    width: 3px;
+    border-radius: 2px;
+    background: $accent;
+  }
+}
+
+.logo, .logoLarge {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  font-weight: 700;
+}
+.logo { width: 32px; height: 32px; border-radius: 6px; font-size: 12px; }
+.logoLarge { width: 40px; height: 40px; border-radius: 8px; font-size: 14px; }
+
+.itemText { display: flex; flex-direction: column; min-width: 0; flex-grow: 1; }
+.itemTitle { font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.itemMeta { font-size: 12px; line-height: 16px; color: $subtle; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.itemExternal { display: flex; align-items: center; gap: 4px; margin-top: 4px; font-size: 12px; line-height: 16px; color: $warn; }
+.chevron { align-self: center; color: $subtle; font-size: 12px; }
+
+.empty { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; padding: 24px 12px; }
+.emptyTitle { font-weight: 600; }
+.emptyText { margin: 0; font-size: 13px; color: $subtle; }
+
+// Right pane
+.right { flex-grow: 1; min-width: 0; min-height: 0; display: flex; flex-direction: column; }
+
+.placeholder {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  text-align: center;
+  background: $well;
+}
+.placeholderIcon { font-size: 36px; color: $disabled; }
+
+.backRow { padding: 4px 4px 0; }
+.rightHeader { display: flex; align-items: center; gap: 14px; padding: 16px 24px 0; }
+.headerText { flex-grow: 1; min-width: 0; }
+.siteTitle { margin: 0; font-size: 20px; line-height: 28px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.siteUrl { font-size: 12px; line-height: 16px; color: $subtle; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.openButton { flex-shrink: 0; }
+
+.tabs { display: flex; gap: 4px; margin-top: 8px; padding: 0 24px; border-bottom: 1px solid $border; overflow-x: auto; }
+.tab {
+  height: 44px;
+  margin-bottom: -1px;
+  padding: 0 12px;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  background: transparent;
+  font: inherit;
+  color: $text;
+  white-space: nowrap;
+  cursor: pointer;
+
+  &:hover:not(:disabled) { background: $rowLine; }
+  &:focus-visible { outline: 2px solid $accent; outline-offset: -2px; }
+  &:disabled { color: $disabled; cursor: default; }
+}
+.tabActive { border-bottom-color: $accent; font-weight: 600; }
+
+.frameArea { flex-grow: 1; min-height: 0; padding: 16px 24px; background: $well; }
+.frameCard {
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+  background: $surface;
+  border: 1px solid $border;
+  border-radius: 8px;
+}
+.frame { display: block; width: 100%; height: 100%; border: 0; }
+.frameSpinner { position: absolute; inset: 0; background: $surface; }
+
+.external {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 24px;
+  text-align: center;
+}
+.externalIcon {
+  width: 48px;
+  height: 48px;
+  border-radius: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  color: $accent;
+  background: $accentSoft;
+}
+.externalTitle { margin: 0; font-size: 18px; line-height: 24px; font-weight: 600; }
+
+.footer {
+  height: 36px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  padding: 0 24px;
+  border-top: 1px solid $border;
+  font-size: 12px;
+  color: $subtle;
+  white-space: nowrap;
+  overflow: hidden;
+
+  strong { font-weight: 600; color: $text; }
+}
+
+
+@media (max-width: 720px) {
+  .rightHeader { padding: 8px 16px 0; }
+  .tabs { padding: 0 8px; }
+  .frameArea { padding: 8px; }
+  .footer { display: none; }
+}
+
+// Documents tab (native list)
+.docs { height: 100%; display: flex; flex-direction: column; min-height: 0; }
+.docsBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 8px 12px 8px 20px;
+  border-bottom: 1px solid $border;
+}
+.crumbs { display: flex; align-items: center; flex-wrap: wrap; gap: 4px; min-width: 0; font-size: 16px; line-height: 24px; }
+.crumb {
+  border: 0;
+  padding: 2px 4px;
+  border-radius: 4px;
+  background: transparent;
+  font: inherit;
+  color: $subtle;
+  cursor: pointer;
+  &:hover { background: $rowLine; color: $text; }
+  &:focus-visible { outline: 2px solid $accent; }
+}
+.crumbCurrent { padding: 2px 4px; font-weight: 600; }
+.crumbSep { font-size: 10px; color: $subtle; }
+.docsScroll { flex-grow: 1; min-height: 0; overflow-y: auto; padding: 4px 20px 16px; }
+.docsSpinner { justify-content: flex-start; padding: 16px 0; }
+
+.docTable { display: flex; flex-direction: column; }
+.docRow {
+  display: grid;
+  grid-template-columns: minmax(0, 3fr) minmax(0, 1.4fr) minmax(0, 1.4fr) minmax(0, 0.8fr);
+  gap: 0 16px;
+  align-items: center;
+  min-height: 44px;
+  border-bottom: 1px solid $rowLine;
+}
+.docHead { min-height: 36px; font-size: 12px; font-weight: 600; color: $subtle; border-bottom-color: $border; }
+.docNameCell { min-width: 0; }
+.docLink {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+  max-width: 100%;
+  padding: 4px 0;
+  border: 0;
+  background: transparent;
+  font: inherit;
+  color: $text;
+  text-align: left;
+  text-decoration: none;
+  cursor: pointer;
+  &:hover .docName { text-decoration: underline; }
+  &:focus-visible { outline: 2px solid $accent; outline-offset: 2px; }
+}
+.docName { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.folderIcon { font-size: 18px; color: #c19c00; flex-shrink: 0; }
+.fileIcon { font-size: 18px; color: $subtle; flex-shrink: 0; }
+.docMeta { font-size: 13px; color: $subtle; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+@media (max-width: 720px) {
+  .docRow { grid-template-columns: minmax(0, 1fr) auto; }
+  .docBy, .docSize { display: none; }
+  .docsBar { padding: 8px; }
+  .docsScroll { padding: 4px 8px 12px; }
+}
+
+// Home (overview) and Site contents
+.overviewHead { display: flex; flex-wrap: wrap; align-items: flex-start; justify-content: space-between; gap: 12px; padding: 12px 0 8px; }
+.overviewText { min-width: 0; }
+.overviewTitle { margin: 12px 0 8px; font-size: 18px; line-height: 24px; font-weight: 600; }
+.overviewHead .overviewTitle { margin-top: 0; }
+.overviewActions { display: flex; flex-wrap: wrap; gap: 8px; }

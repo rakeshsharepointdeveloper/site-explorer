@@ -1,0 +1,45 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/teams/v1.17/MicrosoftTeams.schema.json",
+  "manifestVersion": "1.17",
+  "version": "1.0.0",
+  "id": "8951b0ac-ca26-42f6-87d0-9595ad284ab5",
+  "developer": {
+    "name": "eCollaborative",
+    "websiteUrl": "https://40srp7.sharepoint.com",
+    "privacyUrl": "https://40srp7.sharepoint.com",
+    "termsOfUseUrl": "https://40srp7.sharepoint.com"
+  },
+  "name": { "short": "eCollab Sites", "full": "eCollaborative Site Explorer" },
+  "description": {
+    "short": "Your SharePoint sites, newest activity first.",
+    "full": "Lists the SharePoint sites you can access, sorted by most recent activity, with a filter. Select a site to open its home page, documents or site contents next to the list."
+  },
+  "icons": { "color": "1bf68f7d-a15c-48b5-86b2-f0b64f294b20_color.png", "outline": "1bf68f7d-a15c-48b5-86b2-f0b64f294b20_outline.png" },
+  "accentColor": "#0F6CBD",
+  "staticTabs": [
+    {
+      "entityId": "siteExplorer",
+      "name": "Sites",
+      "contentUrl": "https://{teamSiteDomain}/_layouts/15/TeamsLogon.aspx?SPFX=true&dest=/_layouts/15/teamshostedapp.aspx%3Fteams%26personal%26componentId=1bf68f7d-a15c-48b5-86b2-f0b64f294b20%26forceLocale={locale}",
+      "scopes": ["personal"]
+    }
+  ],
+  "configurableTabs": [
+    {
+      "configurationUrl": "https://{teamSiteDomain}{teamSitePath}/_layouts/15/TeamsLogon.aspx?SPFX=true&dest={teamSitePath}/_layouts/15/teamshostedapp.aspx%3FopenPropertyPane=true%26teams%26componentId=1bf68f7d-a15c-48b5-86b2-f0b64f294b20%26forceLocale={locale}",
+      "canUpdateConfiguration": true,
+      "scopes": ["team", "groupChat"]
+    }
+  ],
+  "permissions": ["identity"],
+  "validDomains": [
+    "*.login.microsoftonline.com",
+    "*.sharepoint.com",
+    "spoprod-a.akamaihd.net",
+    "resourceseq.sharepointonline.com"
+  ],
+  "webApplicationInfo": {
+    "resource": "https://{teamSiteDomain}",
+    "id": "00000003-0000-0ff1-ce00-000000000000"
+  }
+}
